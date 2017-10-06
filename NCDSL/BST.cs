@@ -351,21 +351,6 @@ Private Node Functions
     //Non Recursive
     public IEnumerable<T> GetPostOrder_NonRecursive()
     {
-      
-        // var valueList = GetPreOrder_NonRecursive().ToList();
-        // Stack<T> stack = new Stack<T>();
-        
-        // foreach( var value in valueList )
-        // {
-        //   stack.Push( value );
-        // }
-        
-        // valueList = new List<T>();
-        
-        // while( stack.Count > 0 )
-        // {
-        //   valueList.Add( stack.Pop() );
-        // }
       var valueList = new List<T>();      
       var stackA = new Stack<Node<T>>();
       var stackB = new Stack<T>();
