@@ -1,7 +1,7 @@
 
 #.NET Core 2.0 Data Structures
 
-This is a library containing some data structures written in C# using the .Net core framework. Not for production use (yet.) :)
+This is a library containing some data structures written in C# using the .Net core framework. Tests (xUnit) are included. Not for production use (yet.) This is a work in progress. :)
 
 ## Getting Started
 
@@ -60,12 +60,18 @@ using NCDSL
 ```
 Code away!
 
-## To Do
 
-Look for the nuget package soon. 
 
 ## Contributing
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+### To Do:
+* Red Black Trees
+* Heaps
+* Graphs
+* Much more unit test
+* Much more algorithms. 8)
+
 
 ## Versioning
 

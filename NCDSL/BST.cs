@@ -11,6 +11,7 @@ namespace NCDSL
   using IntStrBuildDict = Dictionary<int, System.Text.StringBuilder>;
   
   
+  
   public class BST<T> where T : IComparable<T>, IEquatable<T>
   {
 
@@ -19,6 +20,8 @@ namespace NCDSL
 */
     uint Count_;
     Node<T> Root_;
+    
+    
 
 /************************************************************
     Properties
@@ -284,8 +287,57 @@ Private Node Functions
       InOrder( Root_, ref valueList );
       return valueList.AsEnumerable();
     }
+    
+    //O(N)
+    public IEnumerable<T> GetInOrder_NonRecursive( )
+    {   
+      var stack = new Stack<Node<T>>();
+      var valueList = new List<T>();    
+      
+      if( Root_ == null )
+      {
+        return valueList;
+      }
+      
+      if( Root_.Right == null && Root_.Left == null )
+      {
+        valueList.Add( Root_.Value );
+        return valueList;        
+      }
+       
+      Node<T> node = Root_;
+      stack.Push( Root_ );
+     
+      while( stack.Count != 0 )
+      {
+        node = stack.Peek();
+        stack.Pop();
+        
+       while( node != null )
+       {
+         stack.Push( node );
+         node = node.Left;
+       }
+       
+       do
+       {
+         node = stack.Peek();
+         stack.Pop();
+         valueList.Add( node.Value );              
+       }
+       while( stack.Count > 0 && node.Right == null );
+       
+       if( node.Right != null )
+       {
+         stack.Push( node.Right );
+       }
+       
+      }
+     
+      return valueList.AsEnumerable();
+    }
 
-  
+
     //O(N)
     //Recursive
     public IEnumerable<T> GetPostOrder()
@@ -295,6 +347,56 @@ Private Node Functions
       return valueList.AsEnumerable();
     }
 
+    //O(N)
+    //Non Recursive
+    public IEnumerable<T> GetPostOrder_NonRecursive()
+    {
+      
+        // var valueList = GetPreOrder_NonRecursive().ToList();
+        // Stack<T> stack = new Stack<T>();
+        
+        // foreach( var value in valueList )
+        // {
+        //   stack.Push( value );
+        // }
+        
+        // valueList = new List<T>();
+        
+        // while( stack.Count > 0 )
+        // {
+        //   valueList.Add( stack.Pop() );
+        // }
+      var valueList = new List<T>();      
+      var stackA = new Stack<Node<T>>();
+      var stackB = new Stack<T>();
+      stackA.Push( Root_ );
+      Node<T> node;
+      
+      
+      while( stackA.Count > 0 )
+      {
+        node = stackA.Pop();
+        stackB.Push( node.Value );
+        
+        if( node.Left != null )
+        {
+          stackA.Push( node.Left );
+        }
+        
+        if( node.Right != null )
+        {
+          stackA.Push( node.Right );
+        }
+        
+      }
+      
+      while( stackB.Count > 0 )
+      {
+        valueList.Add( stackB.Pop() );
+      }
+     
+      return valueList.AsEnumerable();
+    }
    
     //O(N)
     //Recursive
@@ -304,6 +406,47 @@ Private Node Functions
       PreOrder( Root_, ref valueList );
       return valueList.AsEnumerable();
     }
+    
+    public IEnumerable<T> GetPreOrder_NonRecursive()
+    {
+      var stack = new Stack<Node<T>>();
+      var valueList = new List<T>();    
+      
+      if( Root_ == null )
+      {
+        return valueList;
+      }
+      
+      if( Root_.Right == null && Root_.Left == null )
+      {
+        valueList.Add( Root_.Value );
+        return valueList;        
+      }
+       
+      Node<T> node = Root_;
+      stack.Push( Root_ );
+     
+      while ( stack.Count != 0 )
+      {
+        node = stack.Pop();
+        
+        valueList.Add( node.Value );
+        
+        if( node.Right != null )
+        {
+          stack.Push( node.Right );
+        }
+        
+        if( node.Left != null )
+        {
+          stack.Push( node.Left );
+        }
+      }
+     
+      return valueList.AsEnumerable();
+    }
+    
+    
 
     //O(N)
     //Non-Recursive

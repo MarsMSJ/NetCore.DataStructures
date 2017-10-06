@@ -25,10 +25,17 @@ namespace TourApp
             PrintSequence( list );
             
             var bst = new BST<int>();
-            foreach( int i in list )
-            {
-                bst.Insert( i );
-            }
+            bst.Insert( 4 );
+            bst.Insert( 2 );
+            bst.Insert( 3 );
+            bst.Insert( 1 );
+            bst.Insert( 8 );
+            bst.Insert( 7 );
+            bst.Insert( 9 );
+            // foreach( int i in list )
+            // {
+            //     bst.Insert( i );
+            // }
             
             Console.WriteLine("\nAdded Elements, here is the tree (by level):");
             FontColor = ConsoleColor.White;
@@ -37,12 +44,16 @@ namespace TourApp
             
             Console.WriteLine("\nPrinting In-Order (Sorted):");
             PrintSequence( new List<int>( bst.GetInOrder() ) );
+            Console.WriteLine("Printing In-Order (Non-Recursive Method, Sorted):");
+            PrintSequence( new List<int>( bst.GetInOrder_NonRecursive() ) );
             Console.WriteLine("Printing Pre-Order:");
             PrintSequence( new List<int>( bst.GetPreOrder() ) );
-            Console.WriteLine("Printing In-Order:");
+            Console.WriteLine("Printing Pre-Order (Non-Recursive Method):");
+            PrintSequence( new List<int>( bst.GetPreOrder_NonRecursive() ) );
+            Console.WriteLine("Printing Post-Order:");
             PrintSequence( new List<int>( bst.GetPostOrder() ) );
-            Console.WriteLine("Printing In-Level");
-            PrintSequence( new List<int>( bst.GetInLevel() ) );
+            Console.WriteLine("Printing Post-Order (Non-Recursive Method):");
+            PrintSequence( new List<int>( bst.GetPostOrder_NonRecursive() ) );
             Console.WriteLine($"End of BST Demo\n{fDiv}");
              
         }

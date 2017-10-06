@@ -5,7 +5,7 @@ using NCDSL;
 
 namespace NCDSL_test
 {
-    public class NCDSL_BST_Test
+    public class NCDSL_BST_UnitTest
     {
         const int Min = 1;
         const int MAX = 9;
@@ -26,12 +26,6 @@ namespace NCDSL_test
             InOrderSequence = new int[]{ 1, 3, 4, 4, 5, 6, 6, 7, 8, 9 };
             LevelOrderSequence = new int[]{ 5, 1, 6, 4, 7, 3, 4, 6, 8, 9 };
             BST_ = new BST<int>();
-        }
-        
-        [Fact] 
-        public void SuperTest()
-        {
-            
         }
         
         
