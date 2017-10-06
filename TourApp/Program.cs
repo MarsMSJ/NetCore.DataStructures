@@ -22,20 +22,13 @@ namespace TourApp
             Console.WriteLine("BST Demo\nGenerating Random Values...");
             var list = GetPostiveIntSequence();
             Console.Write("We will be using the following sequence:\n");
-            PrintSequence( list );
-            
+            PrintSequence( list );            
             var bst = new BST<int>();
-            bst.Insert( 4 );
-            bst.Insert( 2 );
-            bst.Insert( 3 );
-            bst.Insert( 1 );
-            bst.Insert( 8 );
-            bst.Insert( 7 );
-            bst.Insert( 9 );
-            // foreach( int i in list )
-            // {
-            //     bst.Insert( i );
-            // }
+          
+            foreach( int i in list )
+            {
+                bst.Insert( i );
+            }
             
             Console.WriteLine("\nAdded Elements, here is the tree (by level):");
             FontColor = ConsoleColor.White;
@@ -54,7 +47,8 @@ namespace TourApp
             PrintSequence( new List<int>( bst.GetPostOrder() ) );
             Console.WriteLine("Printing Post-Order (Non-Recursive Method):");
             PrintSequence( new List<int>( bst.GetPostOrder_NonRecursive() ) );
-            Console.WriteLine($"End of BST Demo\n{fDiv}");
+            Console.WriteLine($"Done...\n");
+						Signature();
              
         }
 /*
@@ -122,12 +116,46 @@ It's nice for having stuff out of the way.
                        
         }
         
-    
+    		static void Signature()
+				{
+					WriteCenter("Github.com/MarsMSJ");
+					PrintHorizontalRainbow();	
+					Console.WriteLine(string.Empty);
+					
+				}
+       
+			 static void WriteCenter(string str)
+			 {
+				 Console.SetCursorPosition((Console.WindowWidth - str.Length) / 2, Console.CursorTop);					
+				 Console.WriteLine( str );
+			 }
+			 
+			 static void SetCursorCenter( int length )
+			 {
+				 Console.SetCursorPosition((Console.WindowWidth - length) / 2, Console.CursorTop);
+			 }
+			 
+			 static void PrintHorizontalRainbow( )
+			 {
+				  string space = "          ";														
+					SetCursorCenter( space.Length * 4 );
+					BgColor = ConsoleColor.Red;
+					Console.Write(space);
+					BgColor = ConsoleColor.Yellow;
+					Console.Write(space);
+					BgColor = ConsoleColor.Green;		
+					Console.Write(space);
+					BgColor = ConsoleColor.Blue;
+					Console.Write(space);					
+					ResetConsole();						
+			 }
         
-        static ConsoleColor FontColor { set => Console.ForegroundColor = value; }
+         static ConsoleColor FontColor { set => Console.ForegroundColor = value; }
         static ConsoleColor BgColor { set => Console.BackgroundColor = value; }
         
-        static readonly string fDiv = "\n*******************************\n";
+				static readonly string fHeading= "This is the NetCore.DataStructures Library";
+        static readonly string fDiv = "*******************************";
+				//static readonly string fSpace = "                              ";
         static ConsoleColor DefaultForegroundConsoleColor;
         static ConsoleColor DefaultBackgroundConsoleColor;
         
