@@ -1,5 +1,5 @@
 
-#.NET Core 2.0 Data Structures
+# .NET Core 2.0 Data Structures
 
 This is a library containing some data structures written in C# using the .Net core framework. Tests (xUnit) are included. Not for production use (yet.) This is a work in progress. :)
 
