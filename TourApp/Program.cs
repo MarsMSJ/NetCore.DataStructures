@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NCDSL;
+using NCDSL.TreeStructures;
 
 namespace TourApp
 {

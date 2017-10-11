@@ -2,15 +2,13 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace NCDSL
+namespace NCDSL.TreeStructures
 {
 
 /************************************************************
     Alias
 */
-  using IntStrBuildDict = Dictionary<int, System.Text.StringBuilder>;
-  
-  
+  using IntStrBuildDict = Dictionary<int, System.Text.StringBuilder>;    
   
   public class BST<T> where T : IComparable<T>, IEquatable<T>
   {
@@ -244,6 +242,9 @@ Private Node Functions
       public IEnumerable<T> GetPostOrder()
       public IEnumerable<T> GetPreOrder()
       public IEnumerable<T> GetInLevel()
+			public IEnumerable<T> GetInOrder_NonRecursive()
+      public IEnumerable<T> GetPostOrder_NonRecursive()
+      public IEnumerable<T> GetPreOrder_NonRecursive()
     */
 
     public T GetMax(  )
