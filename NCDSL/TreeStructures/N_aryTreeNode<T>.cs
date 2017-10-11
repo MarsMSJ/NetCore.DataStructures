@@ -18,6 +18,5 @@ namespace NCDSL.TreeStructures
 		}		
 		
 		List<N_aryTreeNode<T>> Children_;	
-
 	}	
 }
