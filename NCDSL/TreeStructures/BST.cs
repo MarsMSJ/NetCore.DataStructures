@@ -579,7 +579,7 @@ Private Node Functions
     /************************************************************
     Private class
 
-    class Node<N>
+    private class Node<N>
 
     */
     class Node<N>
