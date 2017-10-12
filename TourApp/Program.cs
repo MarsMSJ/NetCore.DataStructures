@@ -31,9 +31,10 @@ namespace TourApp
                 bst.Insert( i );
             }
             
-            Console.WriteLine("\nAdded Elements, here is the tree (by level):");
+						
+						Console.WriteLine("\nAdded Elements, here is the tree (by level):");
             FontColor = ConsoleColor.White;
-            bst.PrintByLevel_Simple();
+            bst.PrintByLevel();
             ResetConsole();
             
             Console.WriteLine("\nPrinting In-Order (Sorted):");

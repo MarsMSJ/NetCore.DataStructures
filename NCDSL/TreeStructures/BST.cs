@@ -8,8 +8,7 @@ namespace NCDSL.TreeStructures
 /************************************************************
     Alias
 */
-  using IntStrBuildDict = Dictionary<int, System.Text.StringBuilder>;    
-  
+   
   public class BST<T> where T : IComparable<T>, IEquatable<T>
   {
 
@@ -521,50 +520,60 @@ Private Node Functions
     /************************************************************
     Print Functions
 
-    
-    public void PrintByLevel_Simple)
+    public void PrintByLevel( )
 
     */
-   
-    public void PrintByLevel_Simple()
-    {
-      if( IsEmpty )
-      {
-        Console.WriteLine("Empty");
-        return;
-      }
-      
-      var dict = new IntStrBuildDict();      
-      ByLevel( 0, Root_, ref dict );
-      
-      foreach( var pair in dict )
-      {
-        Console.WriteLine( pair.Value.ToString() );
-      }
-    }
-    
-    void ByLevel( int index, Node<T> node, ref IntStrBuildDict dict )
-    {
-      System.Text.StringBuilder strBuild = null;
-      
-      if( node == null )
-      {
-        return;
-      }
-      
-      if( !dict.TryGetValue( index, out strBuild ) )
-      {
-        strBuild = new System.Text.StringBuilder( node.Value.ToString() );
-        dict.Add( index, strBuild );
-      }
-      else
-      {
-        dict[index].Append($", { node.Value.ToString() }");
-      }
-      
-      ByLevel( index + 1, node.Left, ref dict );
-      ByLevel( index + 1, node.Right, ref dict );
-    }
+		
+		public void PrintByLevel( )
+		{
+			if( Root_ == null )
+			{
+				Console.WriteLine("[ ]");
+				return;
+			}
+			
+			var nodeLevelList = new List<List<Node<T>>>();
+			var list = new List<Node<T>>( );
+			list.Add( Root_ );
+			nodeLevelList.Add( list );
+			
+			for( int i = 0; i < nodeLevelList.Count; i++ )
+			{
+				list = nodeLevelList[i];
+				nodeLevelList.Add( new List<Node<T>>() );
+			
+				if( list.Count == 0 )
+				{
+					break;
+				}
+				
+				
+				for(int j = 0; j < list.Count; j++ )
+				{
+					var node = list[j];
+					Console.Write( node.Value );
+					
+					if( j < list.Count - 1 )
+					{
+						Console.Write( ", " );
+					}
+					else
+					{
+						Console.WriteLine(string.Empty);
+					}
+					
+					if( node.Left != null )
+					{
+						nodeLevelList[i + 1].Add( node.Left );
+					}
+					
+					if( node.Right != null )
+					{
+						nodeLevelList[i + 1].Add( node.Right );
+					}
+				}
+			}
+		}
     
 /************************************************************
     Static String Messages
