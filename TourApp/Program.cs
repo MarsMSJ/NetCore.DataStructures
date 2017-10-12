@@ -36,6 +36,12 @@ namespace TourApp
             FontColor = ConsoleColor.White;
             bst.PrintByLevel();
             ResetConsole();
+						
+						Console.WriteLine("\nBalanced the tree. Here it is again (by level):");
+            FontColor = ConsoleColor.White;
+						bst.BalanceBST();
+            bst.PrintByLevel();
+            ResetConsole();
             
             Console.WriteLine("\nPrinting In-Order (Sorted):");
             PrintSequence( new List<int>( bst.GetInOrder() ) );

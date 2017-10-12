@@ -15,7 +15,7 @@ namespace NCDSL.TreeStructures
 /************************************************************
     Private Members
 */
-    uint Count_;
+    int Count_;
     Node<T> Root_;
     
     
@@ -26,7 +26,7 @@ namespace NCDSL.TreeStructures
       ublic bool IsEmpty
 */
 
-    public uint Count { get => Count_; }
+    public int Count { get => Count_; }
     public bool IsEmpty { get => Count_ == 0; }
 
 /************************************************************
@@ -34,6 +34,7 @@ namespace NCDSL.TreeStructures
         public void Insert( T value )
         public void Remove( T value )
         public void Clear()
+				public void BalanceBST( )
 */
 
     // O(LogN)
@@ -140,7 +141,29 @@ namespace NCDSL.TreeStructures
     Root_ = null;
     Count_ = 0;
   }
-
+	
+	public void BalanceBST( )
+	{
+		var list = GetInOrder_NonRecursive( ).ToList();
+		Root_ = BalanceInsertBST( 0, list.Count - 1, list );	
+		Count_ = list.Count;		
+	}
+	
+	Node<T> BalanceInsertBST( int i, int j,  List<T> values )
+	{
+		if( j <= i )
+		{	
+			return new Node<T>( values[i] );
+		}
+		
+		int mid = ( ( j - i ) / 2 ) + i;
+		var node = new Node<T>( values[mid] );
+		node.Left = BalanceInsertBST( i, mid - 1, values );
+		node.Right = BalanceInsertBST( mid + 1, j, values );
+		return node;
+		
+	}
+	
 
 
 /************************************************************
